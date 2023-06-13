@@ -1,0 +1,61 @@
+.content {
+    background-color: #00acee;
+    width: 80%;
+    height: 17rem;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    border-radius: 8px;
+    color: #fff;
+    padding: 10px;
+}
+
+.titulo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin-bottom: 8px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre {
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    padding: 15px 8px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.tweet {
+    background-color: rgb(255, 255, 255);
+    resize: none;
+    border: none;
+    outline: none;
+    padding: 15px 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    height: 7rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btnEnviar {
+    background-color: #fff;
+    border-radius: 15px;
+    color: #00acee;
+    padding: 12px;
+    width: 5rem;
+    font-size: 16px;
+    align-self: flex-end;
+    margin-top: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background .3s ease;
+}
+
+.btnEnviar:hover {
+    background-color: #c9cbcb;
+}
