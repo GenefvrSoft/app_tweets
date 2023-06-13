@@ -9,18 +9,19 @@ import { getTweetsAction } from './actions/tweetsActions'
 
 function App() {
   const checkLocalStorage = JSON.parse( localStorage.getItem('tweets') );
-  localStorage.setItem('tweets', JSON.stringify( checkLocalStorage ? checkLocalStorage : dataDefault));
-  const [tweets, setTweets] = useState(checkLocalStorage ? checkLocalStorage : dataDefault);
+  const mainData = checkLocalStorage ? checkLocalStorage : dataDefault;
+  localStorage.setItem('tweets', JSON.stringify(mainData));
+  const [tweets, setTweets] = useState(mainData);
 
   useEffect(() => {
-    const getDataTweets = async () => {  // corregir esta parte
+    const getDataTweets = async () => {
       const data = await getTweetsAction();
       if( data.tweets.length ) {
-        const allTweets = [...data.tweets, ...tweets];
+        const tweetsByDefault = JSON.parse( localStorage.getItem('tweets') )?.filter(tweet => typeof tweet.id === 'string') || [];
+        const allTweets = [...data.tweets, ...tweetsByDefault];
         setTweets(allTweets);
         localStorage.setItem('tweets', JSON.stringify(allTweets))
       }
-      console.log(data)
     }
     getDataTweets()
   }, [])
@@ -30,6 +31,7 @@ function App() {
     <div className={style.main}>
       <h2 className={style.titulo}>Bienvenido Usuario!</h2>
       <CrearTweet tweets={tweets} setTweets={setTweets} />
+      <h3 className={style.feed}>Feed</h3>
       {
         tweets.length > 0 && 
           tweets.map(tweet => (

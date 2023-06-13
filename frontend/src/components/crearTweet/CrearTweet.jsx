@@ -1,4 +1,5 @@
 import { crearTweetAction } from '../../actions/tweetsActions'
+import { alertSuccess } from '../../utils/alert'
 import { useForm } from '../../utils/useForm'
 import style from './crearTweet.module.css'
 
@@ -12,7 +13,7 @@ function CrearTweet({tweets, setTweets}) {
     const allTweets = [tweetCreado, ...tweets];
     setTweets(allTweets);
     localStorage.setItem('tweets', JSON.stringify(allTweets))
-    // alertSuccess('Registro exitoso');
+    alertSuccess('El Tweet ha sido publicado en la feed');
     reset();
 }
 
